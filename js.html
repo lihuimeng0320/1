@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>aa</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            list-style: none;
+        }
+        #container{
+            width: 200px;
+            border: 1px solid #000;
+            text-align: center;
+        }
+        #container h3{
+            background: #000000;
+            color: #fff;
+            cursor: pointer;
+        }
+        #container .submenu li:hover{
+            background: #cccccc;
+        }
+        #container .submenu{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<ul id="container">
+    <li>
+        <h3>管理区</h3>
+        <ul class="submenu">
+            <li>001</li>
+            <li>002</li>
+            <li>003</li>
+        </ul>
+    </li>
+    <li>
+        <h3>交流区</h3>
+        <ul class="submenu">
+            <li>001</li>
+            <li>002</li>
+            <li>003</li>
+        </ul>
+    </li>
+</ul>
+<script>
+    var oContainer = document.getElementById("container");
+    var aH3 = oContainer.getElementsByTagName("h3");//nodelist
+    var aUl = oContainer.getElementsByTagName("ul");
+    for(var i=0; i<aH3.length; i++){
+        aH3[i].index = i;//给每个h3对象自定义属性index，保存住当时的i的值
+
+        aH3[i].bFlag = false;//给每个对象定义自己的标识位，表示是否展开，false是合上，true是展开
+        aH3[i].onclick = function(){
+//
+            if(this.bFlag){
+                aUl[this.index].style.display = "none";
+//
+            }else{
+                aUl[this.index].style.display = "block";
+//
+            }
+            this.bFlag = !this.bFlag;
+        };
+    }
+    </script>
+</body>
+</html>
